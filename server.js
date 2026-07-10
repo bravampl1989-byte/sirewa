@@ -775,6 +775,10 @@ io.on("connection", (socket) => {
 
 rescheduleAll();
 
-server.listen(PORT, () => {
-  console.log(`Reminder WA Fonnte berjalan di http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`Reminder WA Fonnte berjalan di http://localhost:${PORT}`);
+  });
+}
+
+module.exports = { app, server, io };
