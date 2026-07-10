@@ -3,3 +3,4 @@ PassengerAppRoot /home/pasampan/sirewa.pa-sampang.go.id
 PassengerBaseURI /
 PassengerAppType node
 PassengerStartupFile app.js
+PassengerNodejs /opt/cpanel/ea-nodejs20/bin/node
