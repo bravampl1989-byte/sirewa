@@ -3,6 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/pasampan/sirewa.pa-sampang.go.id/
     - /bin/cp app.js $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
     - /bin/cp server.js $DEPLOYPATH
     - /bin/cp package.json $DEPLOYPATH
     - /bin/cp package-lock.json $DEPLOYPATH
