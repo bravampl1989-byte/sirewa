@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIREWA - Pengadilan Agama Sampang</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <section id="authScreen" class="auth-screen">
+      <form id="authForm" class="panel auth-card">
+        <img class="auth-logo" src="/assets/sirewa-logo.png" alt="Logo SIREWA" />
+        <p class="eyebrow">Pengadilan Agama Sampang</p>
+        <h2 id="authTitle">Login</h2>
+        <div class="field">
+          <label for="authUsername">Username</label>
+          <input id="authUsername" type="text" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" type="password" autocomplete="current-password" required />
+        </div>
+        <button id="authSubmit" class="primary" type="submit">Masuk</button>
+        <p id="authMessage" class="form-message"></p>
+      </form>
+    </section>
+
+    <main class="app-shell">
+      <aside id="sidebar" class="sidebar hidden">
+        <div class="sidebar-brand">
+          <img class="sidebar-logo" src="/assets/sirewa-logo.png" alt="Logo SIREWA" />
+          <div>
+            <p class="eyebrow">PA Sampang</p>
+            <strong>SIREWA</strong>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" type="button" data-view="dashboardView">Dashboard</button>
+          <button class="nav-item" type="button" data-view="reminderView">Reminder</button>
+          <button class="nav-item" type="button" data-view="groupsView">Group WA</button>
+          <button class="nav-item" type="button" data-view="usersView">User</button>
+        </nav>
+        <button id="logoutButton" class="nav-item logout" type="button">Logout</button>
+      </aside>
+
+      <section class="content-shell">
+        <section class="topbar">
+          <div>
+            <img class="header-logo" src="/assets/sirewa-logo.png" alt="Logo SIREWA" />
+            <p class="eyebrow">Pengadilan Agama Sampang</p>
+            <h1 id="pageTitle">Daftar Reminder</h1>
+          </div>
+          <div class="top-actions">
+            <div id="statusPill" class="status waiting">Memuat</div>
+          </div>
+        </section>
+
+      <section id="dashboardView" class="app-view">
+        <section class="panel list-panel">
+          <div class="list-head">
+            <div>
+              <h2>Daftar reminder</h2>
+              <p id="countText">0 aktif</p>
+            </div>
+            <button id="clearReminders" class="small danger" type="button">Hapus semua</button>
+          </div>
+          <div id="reminderList" class="reminder-list"></div>
+        </section>
+      </section>
+
+      <section id="reminderView" class="app-view hidden">
+      <section class="panel settings-panel">
+        <form id="settingsForm" class="settings-form">
+          <div class="settings-copy">
+            <h2>Pengaturan WhatsApp Fonnte</h2>
+            <p>Ganti token API dan simpan ke database.</p>
+          </div>
+          <div id="tokenInfo" class="token-status">
+            <span>Status token</span>
+            <strong>Token belum tersimpan</strong>
+          </div>
+          <div class="field compact token-field">
+            <label for="token">Token Fonnte</label>
+            <div class="token-input-wrap">
+              <span class="token-lock" aria-hidden="true">▣</span>
+              <input id="token" type="password" placeholder="Token API Fonnte" autocomplete="off" />
+            </div>
+          </div>
+          <div class="token-actions">
+            <button class="primary" type="submit">Simpan Token API</button>
+            <button id="resetToken" class="secondary" type="button">Reset token</button>
+            <button id="fetchGroups" class="secondary" type="button">Update group</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="reminder-layout">
+        <form id="reminderForm" class="panel form-panel">
+          <div class="form-tools">
+            <button id="refreshGroups" class="secondary" type="button">Refresh group</button>
+            <p id="targetMessage" class="form-message"></p>
+          </div>
+
+          <div class="field">
+            <label>Paket reminder</label>
+            <div id="reminderItemList" class="reminder-item-list"></div>
+            <button id="addReminderItem" type="button" class="secondary">Tambah paket</button>
+          </div>
+
+          <div class="button-row">
+            <button class="primary" type="submit">Simpan reminder</button>
+            <button id="testSend" class="secondary" type="button">Tes kirim</button>
+            <button id="resetForm" class="secondary" type="button">Reset</button>
+          </div>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </section>
+      </section>
+
+      <section id="groupsView" class="panel user-settings app-view hidden">
+        <div class="settings-head">
+          <div>
+            <h2>Group WhatsApp Manual</h2>
+            <p>Tambah atau hapus ID group WhatsApp manual.</p>
+          </div>
+        </div>
+
+        <form id="manualGroupForm" class="user-form">
+          <div class="field compact">
+            <label for="manualGroupName">Nama group</label>
+            <input id="manualGroupName" type="text" placeholder="Contoh: Group Kelas A" autocomplete="off" required />
+          </div>
+          <div class="field compact">
+            <label for="manualGroupId">ID group WA</label>
+            <input id="manualGroupId" type="text" placeholder="Contoh: 12036xxxxx@g.us" autocomplete="off" required />
+          </div>
+          <button class="primary slim" type="submit">Tambah group</button>
+          <p id="manualGroupMessage" class="form-message"></p>
+        </form>
+        <div id="manualGroupList" class="user-list"></div>
+      </section>
+
+      <section id="usersView" class="panel user-settings app-view hidden">
+        <div class="settings-head">
+          <div>
+            <h2>User Login</h2>
+            <p>Kelola user yang bisa masuk dashboard.</p>
+          </div>
+        </div>
+        <form id="userForm" class="user-form">
+          <div class="field compact">
+            <label for="newUsername">Username baru</label>
+            <input id="newUsername" type="text" autocomplete="off" required />
+          </div>
+          <div class="field compact">
+            <label for="newPassword">Password</label>
+            <input id="newPassword" type="password" autocomplete="new-password" required />
+          </div>
+          <button class="primary slim" type="submit">Tambah user</button>
+          <p id="userMessage" class="form-message"></p>
+        </form>
+
+        <div id="userList" class="user-list"></div>
+      </section>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
