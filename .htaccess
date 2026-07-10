@@ -1,0 +1,5 @@
+PassengerEnabled on
+PassengerAppRoot /home/pasampan/sirewa.pa-sampang.go.id
+PassengerBaseURI /
+PassengerAppType node
+PassengerStartupFile app.js
