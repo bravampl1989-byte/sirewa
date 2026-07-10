@@ -1,0 +1,28 @@
+{
+  "name": "sirewa",
+  "version": "1.0.0",
+  "description": "SIREWA - Sistem Reminder WhatsApp Pengadilan Agama Sampang berbasis Fonnte.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "health": "node -e \"fetch('http://localhost:'+(process.env.PORT||3000)+'/health').then(r=>r.text()).then(console.log)\""
+  },
+  "keywords": [
+    "sirewa",
+    "reminder",
+    "whatsapp",
+    "fonnte"
+  ],
+  "author": "Pengadilan Agama Sampang",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.18.1",
+    "express": "^5.2.1",
+    "form-data": "^4.0.6",
+    "multer": "^2.2.0",
+    "node-cron": "^4.5.0",
+    "socket.io": "^4.8.3"
+  }
+}
